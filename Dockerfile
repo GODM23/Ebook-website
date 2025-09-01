@@ -1,9 +1,9 @@
-FROM tomcat:9-jdk17-temporal
+FROM tomcat:9.0.85-jdk17-temurin
 
-# Clean default apps
+# Remove default webapps to keep the image clean
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your WAR to the webapps directory
+# Copy your WAR file into the webapps directory
 COPY target/ebook.war /usr/local/tomcat/webapps/ROOT.war
 
-# Tomcat runs by default on container start
+# Tomcat starts automatically, no need to define ENTRYPOINT or CMD
